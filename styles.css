@@ -1,0 +1,27 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: 1fr 4fr 1fr / 1fr;
+}
+
+.playDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.gameboard {
+    display: grid;
+    grid-template: 150px 150px 150px / 150px 150px 150px;
+    justify-content: center;
+}
+
+.field {
+    border: 2px solid black;
+}
+
+.restartDiv {
+    display: flex;
+    justify-content: center;
+}
