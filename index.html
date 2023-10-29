@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Odin Project - Tic Tac Toe</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+    <title>The Odin Project - Tic Tac Toe</title>
 </head>
 <body>
     <header class="header">
@@ -17,6 +18,7 @@
             <button class="selectX" hidden>Select X</button>
             <button class="selectO" hidden>Select O</button>
         </div>
+        <div class="message" id="message">Player X's turn</div>
         <div class="gameboard">
             <div class="field" id="1">X</div>
             <div class="field" id="2">O</div>
@@ -29,6 +31,7 @@
             <div class="field" id="9">X</div>
         </div>
         <div class="restartDiv">
+            <p id="statusText"></p>
             <button class="restartBtn" id="restartBtn">RESTART</button>
         </div>
     </main>
@@ -36,6 +39,5 @@
         <p>Copyright © 2023 BradMJ</p>
         <a href="https://github.com/bradmj" target="blank"></a>
     </footer>
-    <script src="./script.js"></script>
 </body>
 </html>
