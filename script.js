@@ -61,7 +61,7 @@ const Gameboard = (() => {
     return { setField, getField, reset };
 })();
 
-const displayController = (() => {
+const DisplayController = (() => {
     const fieldElements = document.querySelectorAll('.field');
     const messageElement = document.querySelector('#message');
     const restartBtn = document.querySelector('.restartBtn');
@@ -69,9 +69,37 @@ const displayController = (() => {
     fieldElements.forEach((field) => {
         field.addEventListener('click', (e) => {
             if (GameController.getIsOver() || e.target.textContent !== "") return;
-            
-        })
-    })
+            GameController.playRound(parseInt(e.target.dataset.index));
+            updateGameboard();
+        });
+    });
+
+    restartBtn.addEventListener('click', (e) => {
+        Gameboard.reset();
+        GameController.reset();
+        updateGameboard();
+        setMessageElement("Player X's turn");
+    });
+
+    const updateGameboard = () => {
+        for (let i = 0; i < fieldElements.length; i++) {
+            fieldElements[i].textContent = Gameboard.getField(i);
+        };
+    };
+
+    const setResultMessage = (winner) => {
+        if (winner === 'Draw') {
+            setMessageElement("It's a draw!");
+        } else {
+            setMessageElement(`Player ${winner} has won!`);
+        };
+    };
+
+    const setMessageElement = (message) => {
+        messageElement.textContent = message;
+    };
+
+    return { setResultMessage, setMessageElement };
 })();
 
 // Factory function Player object
@@ -83,14 +111,4 @@ const Player = (marker) => {
     };
     
     return { getMarker };
-    // let newPlayer = {};
-    // newPlayer.name = name;
-    // newPlayer.marker = marker;
-    // return newPlayer;
 };
-// const player1 = Player('Rick', "X")
-// const player2 = Player('Joe', "O");
-// console.log(player1.name);
-// console.log(player1.marker);
-// console.log(player2.name);
-// console.log(player2.marker);
