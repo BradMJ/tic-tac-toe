@@ -43,7 +43,7 @@ const DisplayController = (() => {
 
     fieldElements.forEach((field) => {
         field.addEventListener('click', (e) => {
-            if (GameController.getIsOver() || e.target.textContent !== "") return;
+            if (GameController.getGameOver() || e.target.textContent !== "") return;
             GameController.playRound(parseInt(e.target.dataset.index));
             updateGameboard();
         });
@@ -129,7 +129,7 @@ const GameController = (() => {
             );
     };
 
-    const getIsOver = () => {
+    const getGameOver = () => {
         return gameOver;
     };
 
@@ -138,5 +138,5 @@ const GameController = (() => {
         gameOver = false;
     };
 
-    return { playRound, getIsOver, reset };
+    return { playRound, getGameOver, reset };
 })();
